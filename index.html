@@ -1,1 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JurisHub Perú | Portafolio Digital LegalTech & JusticeTech</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --navy-dark: #0a192f;
+            --navy-light: #112240;
+            --blue-accent: #2563eb;
+            --gold-accent: #d97706;
+            --gold-light: #fef3c7;
+            --bg-body: #f8fafc;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --white: #ffffff;
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 30px -10px rgba(15, 23, 42, 0.1);
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        header {
+            background: rgba(10, 25, 47, 0.98);
+            backdrop-filter: blur(12px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+            color: var(--white);
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .brand i { color: var(--gold-accent); }
+        .brand span { color: #38bdf8; }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.88rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--white); }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%);
+            color: var(--white);
+            padding: 8.5rem 2rem 4.5rem 2rem;
+            position: relative;
+        }
+
+        .hero-container { max-width: 1100px; margin: 0 auto; }
+
+        .badge-academic {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(217, 119, 6, 0.15);
+            border: 1px solid rgba(217, 119, 6, 0.4);
+            color: #fbbf24;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.2rem;
+            line-height: 1.35;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-bottom: 2.5rem;
+        }
+
+        .academic-info-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-block h4 {
+            color: #38bdf8;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.6rem;
+        }
+
+        .info-block p { font-size: 0.92rem; color: #e2e8f0; margin-bottom: 0.3rem; }
+
+        /* Main Content */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+        section {
+            padding: 4.5rem 0;
+            scroll-margin-top: 70px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .section-header { margin-bottom: 2.5rem; }
+
+        .section-number {
+            color: var(--gold-accent);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .section-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.85rem;
+            color: var(--navy-dark);
+            font-weight: 700;
+        }
+
+        /* Components */
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.8rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1.8rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid #f1f5f9;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(37, 99, 235, 0.08);
+            color: var(--blue-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 { font-size: 1.15rem; color: var(--navy-dark); margin-bottom: 0.7rem; }
+
+        .location-badge {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: #1e40af;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin-bottom: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .location-badge i { font-size: 1.8rem; color: var(--blue-accent); }
+
+        /* Cases Layout */
+        .case-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.8rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .case-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .case-title { font-size: 1.2rem; color: var(--navy-dark); font-weight: 700; }
+        .case-tag { background: #fee2e2; color: #991b1b; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; }
+
+        .case-body { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+
+        .case-box { background: #f8fafc; padding: 1.2rem; border-radius: 10px; border-left: 4px solid var(--blue-accent); }
+        .case-box.aporte { border-left-color: var(--gold-accent); background: #fffbe0; }
+
+        .entity-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
+        .pill { background: var(--navy-dark); color: var(--white); padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.8rem; }
+
+        /* Diagrams */
+        .diagram-box {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 2rem;
+        }
+
+        .flow-step {
+            background: #f8fafc;
+            border-left: 4px solid var(--blue-accent);
+            padding: 0.9rem 1.2rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+        }
+
+        .flow-arrow { text-align: center; color: var(--blue-accent); margin: 0.2rem 0; }
+
+        .reference-link { color: var(--blue-accent); text-decoration: underline; word-break: break-all; }
+
+        footer {
+            background: var(--navy-dark);
+            color: #94a3b8;
+            text-align: center;
+            padding: 2.5rem 2rem;
+            font-size: 0.88rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav>
+            <a href="#" class="brand">
+                <i class="fa-solid fa-scale-balanced"></i> Juris<span>Hub Perú</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#categorizacion">Categorización</a></li>
+                <li><a href="#factores">Factores Éxito</a></li>
+                <li><a href="#startups">Startups</a></li>
+                <li><a href="#diagramas">Diagramas</a></li>
+                <li><a href="#casos">Casos & Aportes</a></li>
+                <li><a href="#reflexion">Reflexión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-container">
+            <div class="badge-academic">
+                <i class="fa-solid fa-graduation-cap"></i> Universidad César Vallejo | Facultad de Derecho
+            </div>
+            <h1>Análisis del Hub Tecnológico Tel Aviv y adaptación innovativa digital del sistema de justicia en el Perú</h1>
+            <p class="hero-subtitle">Proyecto "JurisHub Perú": Innovación LegalTech y JusticeTech para frenar fraudes informáticos y suplantación de identidad.</p>
+
+            <div class="academic-info-card">
+                <div class="info-block">
+                    <h4>Asignatura & Asesora</h4>
+                    <p><strong>Derecho - Ciclo II</strong></p>
+                    <p>Dra. Milagros Luz Hidalgo Legoas</p>
+                </div>
+                <div class="info-block">
+                    <h4>Equipo de Investigación</h4>
+                    <p>• ACUÑA HUANCA, Deybi Dominik</p>
+                    <p>• SIMON HURTADO, Daniel Esteban</p>
+                    <p>• ARANDA SÁNCHEZ, Dayana</p>
+                    <p>• RUIZ MELCHOR, Fanny</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- SECCIÓN 1: CATEGORIZACIÓN -->
+        <section id="categorizacion">
+            <div class="section-header">
+                <span class="section-number">Sección 01</span>
+                <h2 class="section-title">Categorización del Hub Tel Aviv</h2>
+            </div>
+
+            <div class="location-badge">
+                <i class="fa-solid fa-location-dot"></i>
+                <div>
+                    <strong>Ubicación Geográfica Estructurada:</strong><br>
+                    Ciudad de Tel Aviv, País de Israel | Región Costa mediterránea (Zona central-oeste del país).
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-globe"></i></div>
+                <h3>Ecosistema Referente Global</h3>
+                <p>Conocida mundialmente como la <strong>"Nación de las Startups"</strong>, es el ecosistema con mayor número de empresas emergentes por habitante del mundo. Es el referente global en ciberseguridad, identidad digital y tecnología aplicada a la justicia. Destaca por su estrecha articulación entre el sector público, las fuerzas de seguridad, universidades de excelencia y el ecosistema emprendedor.</p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: FACTORES DE ÉXITO -->
+        <section id="factores">
+            <div class="section-header">
+                <span class="section-number">Sección 02</span>
+                <h2 class="section-title">Factores de Éxito del Hub de Tel Aviv</h2>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>1. Formación desde el Servicio Militar</h3>
+                    <p>Jóvenes reciben formación tecnológica avanzada en unidades de defensa. Al egresar, trasladan esa experiencia al sector civil creando empresas innovadoras.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                    <h3>2. Cultura de Innovación</h3>
+                    <p>Cuestionar y equivocarse se consideran parte del aprendizaje, no un fracaso. Esto fomenta ideas audaces y transformadoras.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                    <h3>3. Apoyo Público y Privado</h3>
+                    <p>El gobierno financia etapas iniciales de empresas, sumado al capital internacional que impulsa un crecimiento rápido e interconectado.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                    <h3>4. Colaboración Multisectorial</h3>
+                    <p>El sector defensa, universidades, gobierno y empresas trabajan totalmente conectados. Lo desarrollado para seguridad militar se adapta a soluciones civiles.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: STARTUPS DESTACADAS -->
+        <section id="startups">
+            <div class="section-header">
+                <span class="section-number">Sección 03</span>
+                <h2 class="section-title">Startups Destacadas y Modelos de Negocio</h2>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-lock"></i></div>
+                    <h3>CyberArk</h3>
+                    <p><strong>Ciberseguridad:</strong> Protege accesos privilegiados en empresas y gobiernos. Modelo de venta de licencias y suscripciones anuales institucionales.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-fingerprint"></i></div>
+                    <h3>Onomondo</h3>
+                    <p><strong>Verificación de Identidad:</strong> Confirma la identidad mediante datos biométricos sin compartir contraseñas. Licencia de uso a entidades financieras por cada verificación.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fa-solid fa-car-side"></i></div>
+                    <h3>Mobileye</h3>
+                    <p><strong>Tecnología Automotriz:</strong> Previene accidentes mediante IA y cámaras de visión computarizada. Venta directa a fabricantes de vehículos.</p>
+                </div>
+            </div>
+
+            <!-- REGULACIÓN Y UNIVERSIDADES -->
+            <div class="grid-2" style="margin-top: 2rem;">
+                <div class="card">
+                    <h3><i class="fa-solid fa-gavel" style="color: var(--gold-accent);"></i> Entorno Regulatorio</h3>
+                    <ul style="margin-left: 1.2rem; font-size: 0.9rem;">
+                        <li><strong>Ley de Protección de Datos (2018):</strong> Reglas claras sobre recopilación y almacenamiento.</li>
+                        <li><strong>Normativa de Ciberseguridad:</strong> Filtros estrictos antes de la implementación.</li>
+                        <li><strong>Incentivos I+D:</strong> Beneficios tributarios para empresas innovadoras.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><i class="fa-solid fa-building-columns" style="color: var(--gold-accent);"></i> Universidades Claves</h3>
+                    <ul style="margin-left: 1.2rem; font-size: 0.9rem;">
+                        <li><strong>Univ. de Tel Aviv:</strong> Centro de excelencia en ciberseguridad.</li>
+                        <li><strong>Instituto Weizmann de Ciencias:</strong> Ciencia convertida en productos.</li>
+                        <li><strong>Univ. Hebrea de Jerusalén:</strong> Formación de emprendedores.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: DIAGRAMAS -->
+        <section id="diagramas">
+            <div class="section-header">
+                <span class="section-number">Sección 04</span>
+                <h2 class="section-title">Diagramas de Flujo del Sistema</h2>
+            </div>
+
+            <!-- DIAGRAMA 1 -->
+            <div class="diagram-box">
+                <h3 style="margin-bottom: 1rem;"><i class="fa-solid fa-diagram-next"></i> Diagrama 1: Trámite Tradicional y Delictivo</h3>
+                <div class="flow-step">1. INICIO: Una persona desea comprar un terreno y confía en el vendedor</div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="flow-step">2. Se firma contrato privado / minuta y se entrega dinero</div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="flow-step" style="border-left-color: var(--gold-accent);">3. Descubre que el vendedor NO era el verdadero dueño</div>
+                
+                <h4 style="margin-top: 1rem;">Entidades Participantes:</h4>
+                <div class="entity-pills">
+                    <span class="pill">Ministerio Público</span><span class="pill">SUNARP</span><span class="pill">Defensoría del Pueblo</span><span class="pill">Municipalidad</span><span class="pill">RENIEC</span><span class="pill">Bancos</span><span class="pill">Notaría</span><span class="pill">PNP</span>
+                </div>
+                
+                <h4 style="margin-top: 1rem;">¿Se confirma delito informático?</h4>
+                <p>• <strong>SÍ:</strong> Denuncia PNP -> Ministerio Público -> Poder Judicial procesa -> Sentencia y medidas cautelares.</p>
+                <p>• <strong>NO:</strong> Se soluciona por vías administrativas (devolución del dinero y cuentas bancarias).</p>
+            </div>
+
+            <!-- DIAGRAMA 2 -->
+            <div class="diagram-box">
+                <h3 style="margin-bottom: 1rem;"><i class="fa-solid fa-network-wired"></i> Diagrama 2: Plataforma JurisHub Perú</h3>
+                <div class="grid-2">
+                    <div>
+                        <p><strong>• RENIEC:</strong> Validación biométrica de identidad.</p>
+                        <p><strong>• USB / SBS:</strong> Verificación inmediata de cuentas y préstamos no reconocidos.</p>
+                    </div>
+                    <div>
+                        <p><strong>• OSIPTEL:</strong> Revisión de líneas contratadas sin consentimiento.</p>
+                        <p><strong>• MPFN:</strong> Recepción automática de denuncias.</p>
+                    </div>
+                </div>
+                <div style="background: var(--navy-dark); color: var(--white); padding: 1.2rem; border-radius: 10px; margin-top: 1rem;">
+                    <strong>Motor Inteligente "Juztina":</strong> Analiza consistencia documental y detecta patrones de duplicidad o firmas adulteradas emitiendo alertas.
+                </div>
+                <div class="entity-pills" style="margin-top: 1rem;">
+                    <span class="pill" style="background: var(--gold-accent);">Aliados: RENIEC | SUNARP | Municipalidades | Notarías | IA Juztina | SIJ / Curia</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: CASOS PRÁCTICOS -->
+        <section id="casos">
+            <div class="section-header">
+                <span class="section-number">Sección 05</span>
+                <h2 class="section-title">Adaptación de Aportes al Sistema Peruano</h2>
+            </div>
+
+            <!-- CASO 1 -->
+            <div class="case-card">
+                <div class="case-header">
+                    <span class="case-title">Caso A: Suplantación de Identidad ("La Estafa del DNI Duplicado")</span>
+                    <span class="case-tag">Caso María</span>
+                </div>
+                <div class="case-body">
+                    <div class="case-box">
+                        <strong>Situación Actual:</strong>
+                        <p>Usaron una copia del DNI de María para abrir cuentas y pedir créditos a su nombre. Pasó 4 meses en trámites personales en tres bancos sin solución.</p>
+                    </div>
+                    <div class="case-box aporte">
+                        <strong>Aporte Tecnológico (Onomondo):</strong>
+                        <p>Verificación biométrica inmediata de rostro/huella sin DNI físico. Bloqueo automático de cuentas e interconexión con RENIEC, SUNAT, MPFN y SBS.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CASO 2 -->
+            <div class="case-card">
+                <div class="case-header">
+                    <span class="case-title">Caso B: Líneas Telefónicas Fraudulentas</span>
+                    <span class="case-tag">Caso Carlos (Trujillo)</span>
+                </div>
+                <div class="case-body">
+                    <div class="case-box">
+                        <strong>Situación Actual:</strong>
+                        <p>Descubrió tres facturas por líneas que nunca contrató acumulando más de S/ 1,200 en deudas pendientes.</p>
+                    </div>
+                    <div class="case-box aporte">
+                        <strong>Aporte Tecnológico (Report SG):</strong>
+                        <p>Plataforma de alerta única que notifica simultáneamente a OSIPTEL, SBS, RENIEC y Ministerio Público. Tiempos de respuesta reducidos de meses a horas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CASO 3 -->
+            <div class="case-card">
+                <div class="case-header">
+                    <span class="case-title">Caso C: Estafas por Llamadas y Mensajes Fraudulentos</span>
+                    <span class="case-tag">Caso Carmen (Trujillo)</span>
+                </div>
+                <div class="case-body">
+                    <div class="case-box">
+                        <strong>Situación Actual:</strong>
+                        <p>Llamada extorsiva exigiendo dinero urgente por un supuesto accidente de su hijo.</p>
+                    </div>
+                    <div class="case-box aporte">
+                        <strong>Aporte Tecnológico (Rocket Lawyer):</strong>
+                        <p>Trazabilidad centralizada en tiempo real. Congela la cuenta receptora en minutos tras la alerta al banco y articula con MPFN, Poder Judicial, RENIEC, SUNARP y SBS.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 6: REFLEXIÓN & BIBLIOGRAFÍA -->
+        <section id="reflexion" style="border-bottom: none;">
+            <div class="section-header">
+                <span class="section-number">Sección 06</span>
+                <h2 class="section-title">Reflexión Final y Referencias</h2>
+            </div>
+
+            <div class="card" style="background: var(--navy-dark); color: var(--white); padding: 2rem; margin-bottom: 2rem;">
+                <p style="font-style: italic; font-size: 1.05rem;">"El modelo de Tel Aviv demuestra que no se necesita abundancia de recursos naturales para avanzar: basta con invertir en las personas, en su formación y en su talento. En el Perú, el camino no es copiar el modelo israelí, sino adaptar su esencia: formar especialistas, conectar instituciones que hoy no dialogan, y entender que la tecnología es una aliada para proteger derechos, no una barrera."</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fa-solid fa-book" style="color: var(--gold-accent);"></i> Referencias Bibliográficas</h3>
+                <ol style="margin-left: 1.5rem; margin-top: 1rem; font-size: 0.9rem; line-height: 2;">
+                    <li>Señor, D., & Singer, S. (2009). <em>Start-Up Nation: La historia del milagro económico de Israel</em>. PublicAffairs. <a href="https://www.iati.co.il" target="_blank" class="reference-link">https://www.iati.co.il</a></li>
+                    <li>IATI, Israel Advanced Technology Industries. (2024). <em>Informe anual del ecosistema tecnológico israelí</em>. <a href="https://www.iati.co.il" target="_blank" class="reference-link">https://www.iati.co.il</a></li>
+                    <li>Ministerio Público, Fiscalía de la Nación. (2024). <em>Delitos informáticos en el Perú: Estadísticas 2017-2024</em>. <a href="https://www.gob.pe/mpfn" target="_blank" class="reference-link">https://www.gob.pe/mpfn</a></li>
+                    <li>Banco Mundial. (2023). <em>Ecosistemas de innovación y ciberseguridad. Lecciones para países en desarrollo</em>. <a href="https://www.bancomundial.org" target="_blank" class="reference-link">https://www.bancomundial.org</a></li>
+                    <li>Autoridad de Protección de Datos de Israel. (2018). <em>Ley de Protección de Datos de Israel</em>. <a href="https://www.dataprotection.gov.il" target="_blank" class="reference-link">https://www.dataprotection.gov.il</a></li>
+                </ol>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>JurisHub Perú</strong> — Portafolio Digital de Investigación Jurídica</p>
+        <p>© 2026 Universidad César Vallejo | Escuela Profesional de Derecho</p>
+    </footer>
+
+</body>
+</html>
